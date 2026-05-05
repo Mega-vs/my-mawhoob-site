@@ -87,7 +87,7 @@
         <p>جميع الحقوق محفوظة لعام 2026</p>
     </footer>
 <script>
-    const scriptURL = 'حط_هنا_الرابط_اللي_نسخته_من_جوجل'; // استبدل ده برابط الاندبوينت بتاعك
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxwbLC4luukCQGCuri13hTppcPgJpJkbGUAznI0oPBfu0I7yFV7y-n_m8p1MoMnTxXrXA/exec'; // استبدل ده برابط الاندبوينت بتاعك
     const form = document.getElementById('registrationForm');
 
     form.addEventListener('submit', e => {
@@ -101,10 +101,16 @@
         };
 
         // إرسال البيانات للاندبوينت
-        fetch(scriptURL, { 
-            method: 'POST', 
-            body: JSON.stringify(formData)
-        })
+      fetch(scriptURL, {
+  method: 'POST',
+  mode: 'no-cors', // جرب تضيف السطر ده لو ظهر لك خطأ CORS
+  cache: 'no-cache',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(formData)
+})
+       
         .then(response => {
             const responseDiv = document.getElementById('responseMessage');
             responseDiv.classList.remove('d-none');
